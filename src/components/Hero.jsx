@@ -1,0 +1,81 @@
+import { heroMan, heroBg } from '../utils/assets'
+
+const Hero = ({ onOpenContact }) => {
+  return (
+    <section id="home" className="relative bg-[#1C1E3D] text-white overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-12 lg:pb-0 min-h-[520px] lg:min-h-[580px]">
+      {/* Background overlay texture & subtle lighting */}
+      <div className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1C1E3D] via-[#1C1E3D]/95 to-[#1C1E3D]/80 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#2A2E63]/30 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-[#C5A059]/10 blur-3xl pointer-events-none" />
+
+      {/* Signature Solid Mustard Yellow Block in Bottom Right matching screenshot */}
+      <div className="absolute bottom-0 right-0 w-[45%] md:w-[38%] lg:w-[32%] xl:w-[28%] h-24 sm:h-28 md:h-32 lg:h-36 bg-[#C88D2B] z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-end">
+          
+          {/* Left Column: Social Follow + Hero Content */}
+          <div className="lg:col-span-7 flex items-start gap-4 sm:gap-6 lg:gap-8 pb-6 lg:pb-14 z-10">
+            
+            {/* Vertical Social Follow Bar */}
+            <div className="hidden sm:flex flex-col items-center gap-4 text-white/80 shrink-0 pt-1">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-6 h-6 flex items-center justify-center hover:text-[#C5A059] transition-colors" aria-label="LinkedIn">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8m1.4 9.74v-8.37H5.06v8.37z"/></svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-6 h-6 flex items-center justify-center hover:text-[#C5A059] transition-colors" aria-label="Facebook">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-6 h-6 flex items-center justify-center hover:text-[#C5A059] transition-colors" aria-label="Instagram">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <div className="w-[1px] h-8 bg-white/40 my-1" />
+              <span className="text-[9px] font-bold tracking-[0.25em] text-white/70 uppercase [writing-mode:vertical-rl] rotate-180">
+                FOLLOW US
+              </span>
+            </div>
+
+            {/* Typography Content */}
+            <div className="space-y-4 max-w-lg">
+              <div className="space-y-0.5 tracking-tight font-black uppercase text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl leading-[1.08]">
+                <h1 className="text-white">MADAARIJ</h1>
+                <h2 className="text-[#C5A059]">PROJECT</h2>
+                <h2 className="text-white">MANAGEMENT</h2>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <span className="text-white">SERVICES</span>
+                  <div className="h-[3px] w-16 sm:w-24 md:w-28 bg-[#C5A059] rounded-full inline-block" />
+                </div>
+              </div>
+
+              <p className="text-gray-200 text-xs sm:text-sm md:text-sm leading-relaxed pt-1 max-w-md">
+                Did you know that over 70% of projects fail due to poor planning and communication? We proudly support businesses with expert consulting, hands-on training, and practical project solutions that drive real results.
+              </p>
+
+              <div className="pt-2">
+                <button
+                  onClick={onOpenContact}
+                  className="cursor-pointer px-7 py-3 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#FEE8BC] via-[#F8D288] to-[#F3BD5B] text-[#1C1E3D] hover:brightness-105 transition-all duration-300 shadow-xl shadow-amber-900/20 active:scale-95"
+                >
+                  GET STARTED
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column: Hero Image contained within its column, anchored to bottom */}
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end items-end self-end z-10 w-full">
+            <img
+              src={heroMan}
+              alt="Madaarij Project Management Consultant"
+              className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-none h-auto max-h-[440px] sm:max-h-[500px] lg:max-h-[540px] object-contain object-bottom -mb-0.5 select-none drop-shadow-2xl"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Hero
