@@ -65,19 +65,7 @@ const SectorsSection = () => {
               })}
             </div>
 
-            <div className="mt-4 p-5 rounded-2xl bg-[#FAF8F5] border border-amber-200/80 shadow-sm flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#1C1E3D] flex items-center justify-center shrink-0">
-                <img src={selectedSector.icon} alt="" className="w-6 h-6 object-contain" />
-              </div>
-              <div className="space-y-1">
-                <h3 className="text-sm font-bold text-[#0B132B] uppercase">
-                  {selectedSector.name}
-                </h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
-                  {selectedSector.desc}
-                </p>
-              </div>
-            </div>
+          
           </div>
         </div>
 

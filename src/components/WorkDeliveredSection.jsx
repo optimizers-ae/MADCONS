@@ -40,7 +40,7 @@ const projects = [
   }
 ]
 
-const WorkDeliveredSection = ({ onOpenContact }) => {
+const WorkDeliveredSection = () => {
   return (
     <section id="projects" className="relative bg-[#FAF7F2] py-20 lg:py-28 text-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -85,21 +85,15 @@ const WorkDeliveredSection = ({ onOpenContact }) => {
                   <span className="text-[11px] text-[#C5A059] font-medium tracking-wide">
                     {proj.timeline}
                   </span>
-                  <button onClick={onOpenContact} className="cursor-pointer text-xs font-semibold text-gray-300 hover:text-[#C5A059] flex items-center gap-1 transition-colors">
+                  <a href="#contact" className="cursor-pointer text-xs font-semibold text-gray-300 hover:text-[#C5A059] flex items-center gap-1 transition-colors">
                     <span>Details</span>
                     <ArrowUpRight size={14} />
-                  </button>
+                  </a>
                 </div>
               </div>
 
             </div>
           ))}
-        </div>
-
-        <div className="flex justify-center items-center gap-2 pt-10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#C88D2B]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
         </div>
 
       </div>

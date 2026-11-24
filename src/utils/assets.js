@@ -24,12 +24,19 @@ import bannerBg2 from '../assets/images/image-24.webp'
 import testimonial1 from '../assets/images/image-25.webp'
 import testimonial2 from '../assets/images/image-26.webp'
 import testimonial3 from '../assets/images/image-27.webp'
+import testimonial4 from '../assets/images/image-67.webp'
+import testimonial5 from '../assets/images/image-32.webp'
 import footerBg from '../assets/images/image-28.webp'
 import footerLogo from '../assets/images/image-29.webp'
 import process1 from '../assets/images/image-39.webp'
 import contractMgmt from '../assets/images/image-43.webp'
 import process2 from '../assets/images/image-45.webp'
 import process3 from '../assets/images/image-49.webp'
+import serviceProcurement from '../assets/images/service-procurement.webp'
+import serviceProjectMgmt from '../assets/images/service-project-mgmt.webp'
+import serviceAdminStudies from '../assets/images/service-admin-studies.webp'
+import serviceOperationalAnalysis from '../assets/images/service-operational-analysis.webp'
+import ourDifference from '../assets/images/our-difference.webp'
 
 export {
   heroBg, logo, heroMan, aboutTeam,
@@ -38,7 +45,9 @@ export {
   iconPackaging, iconHealth, iconTech, iconConstruction, iconLogistics,
   iconEnergy, iconFinance, iconGov, iconCosmetics, iconRetail, iconEducation,
   valueGrowth, bannerBg2,
-  testimonial1, testimonial2, testimonial3,
+  testimonial1, testimonial2, testimonial3, testimonial4, testimonial5,
   footerBg, footerLogo,
-  process1, contractMgmt, process2, process3
+  process1, contractMgmt, process2, process3,
+  serviceProcurement, serviceProjectMgmt, serviceAdminStudies, serviceOperationalAnalysis,
+  ourDifference
 }

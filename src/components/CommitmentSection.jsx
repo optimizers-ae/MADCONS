@@ -84,12 +84,7 @@ const CommitmentSection = () => {
           })}
         </div>
 
-        <div className="flex justify-center items-center gap-2 pt-10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#C88D2B]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-600" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-600" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-600" />
-        </div>
+        
       </div>
     </section>
   )

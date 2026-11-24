@@ -1,7 +1,7 @@
 import { CheckCircle2, ArrowRight } from 'lucide-react'
-import { aboutTeam } from '../utils/assets'
+import sec1 from '../../src/assets/sec1.webp'
 
-const AboutSection = ({ onOpenContact }) => {
+const AboutSection = () => {
   return (
     <section id="about" className="relative bg-[#FAF8F5] text-gray-800 py-20 lg:py-28 overflow-hidden">
       {/* Top Left Mustard Geometric Accent Block */}
@@ -12,7 +12,7 @@ const AboutSection = ({ onOpenContact }) => {
           
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200/80 group">
-              <img src={aboutTeam} alt="Madaarij Team Collaboration" className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" />
+              <img src={sec1} alt="Madaarij Team Collaboration" className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1C1E3D]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
 
@@ -25,41 +25,51 @@ const AboutSection = ({ onOpenContact }) => {
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-2">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
-                ABOUT MADAARIJ PROJECT
+                WHO WE ARE 
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B132B] uppercase tracking-tight leading-tight">
-                MANAGEMENT SERVICES
+                WE THINK DIFFERENTLY. WE WORK STRATEGICALLY
               </h2>
+              {/* <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B132B] uppercase tracking-tight leading-tight">
+                MANAGEMENT SERVICES
+              </h2> */}
             </div>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Madaarij Project Management Services is a premier project management consultancy committed to steering high-complexity initiatives toward seamless completion. We fuse deep industry expertise with agile methodologies to turn ambitious enterprise visions into measurable realities.
+              At <b>MADAARIJ Consulting & Advisory </b>, we are driven by a simple belief that Every organization has the
+              potential to achieve more with the right strategy, the right structure, and the right expertise.
+
             </p>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              With a wealth of industry experience, our team of seasoned professionals is committed to delivering exceptional value across every phase of your project lifecycle. From initial feasibility to final commissioning, we uphold the highest benchmarks of quality, cost optimization, and timeliness.
+              We bring together analytical thinking, professional insight, and practical management solutions to
+              help businesses and institutions navigate complexity and unlock their full potential.
+
             </p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700">Strategic scope planning and turnkey contract governance</span>
+                <span className="text-sm font-medium text-gray-700"> <b>INSIGHT </b> — Understanding challenges, identifying opportunities, and seeing the bigger picture</span>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700">Proactive risk identification and value engineering protocols</span>
+                <span className="text-sm font-medium text-gray-700"><b>STRATEGY </b> — Developing intelligent, structured, and tailored solutions</span>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700">Transparent reporting with dedicated stakeholder alignment</span>
+                <span className="text-sm font-medium text-gray-700"><b>EXECUTION </b> — Turning recommendations into meaningful actions and measurable improvements</span>
               </div>
             </div>
 
             <div className="pt-4">
-              <button onClick={onOpenContact} className="cursor-pointer px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all duration-300 shadow-md flex items-center gap-2">
+              <a
+                href="#contact"
+                className="cursor-pointer inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all duration-300 shadow-md"
+              >
                 <span>Request A Consultation</span>
                 <ArrowRight size={16} />
-              </button>
+              </a>
             </div>
           </div>
 

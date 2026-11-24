@@ -1,8 +1,9 @@
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import BrandLogo from './BrandLogo'
 
-const Footer = ({ onOpenContact }) => {
+const Footer = () => {
   return (
-    <footer id="contact" className="relative bg-[#1C1E3D] text-white pt-16 pb-8 overflow-hidden">
+    <footer className="relative bg-[#1C1E3D] text-white pt-16 pb-8 overflow-hidden">
       
       {/* Background soft glow */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#2C3066]/30 blur-3xl pointer-events-none" />
@@ -12,10 +13,8 @@ const Footer = ({ onOpenContact }) => {
         
         {/* Floating Top Contact Bar */}
         <div className="bg-white rounded-2xl p-6 sm:p-8 text-gray-800 shadow-2xl mb-14 border border-amber-200/60 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl sm:text-3xl font-black tracking-wider uppercase text-[#0B132B]">
-              MADAARIJ
-            </span>
+          <div className="flex items-center">
+            <BrandLogo variant="light" />
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-end gap-6 sm:gap-10">
@@ -35,29 +34,42 @@ const Footer = ({ onOpenContact }) => {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-[#C88D2B] uppercase tracking-wider">Email Us</p>
-                <p className="text-xs sm:text-sm font-semibold text-[#0B132B]">info@madarejpms.com</p>
+                <a href="mailto:connect@madcons.com" className="text-xs sm:text-sm font-semibold text-[#0B132B] hover:text-[#C88D2B] transition-colors">
+                  connect@madcons.com
+                </a>
               </div>
             </div>
 
-            <button onClick={onOpenContact} className="cursor-pointer px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all shadow-md flex items-center gap-2">
+            <a
+              href="#contact"
+              className="cursor-pointer px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all shadow-md flex items-center gap-2"
+            >
               <span>Book Call</span>
               <ArrowRight size={14} />
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Footer Navigation Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-gray-800">
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-lg font-bold text-[#DFB15B] uppercase tracking-tight">
-              MADAARIJ PROJECT MANAGEMENT
+            <h3 className="text-lg font-black tracking-tight uppercase">
+              <span className="text-white">MADA</span>
+              <span className="text-[#C5A059]">ARIJ</span>{' '}
+              <span className="text-[#C5A059]">CONSULTING & ADVISORY</span>
             </h3>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm">
               A dynamic and forward-thinking project management consulting firm dedicated to turning visions into reality through strategic planning, precision execution, and measurable results.
             </p>
             <div className="flex items-center gap-3 pt-2 text-gray-400">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#242854] border border-gray-700/80 flex items-center justify-center hover:text-[#C5A059] hover:border-[#C5A059] transition-all" aria-label="LinkedIn">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8m1.4 9.74v-8.37H5.06v8.37z"/></svg>
+                <svg
+  xmlns="http://www.w3.org/2000/svg"
+  className="w-4 h-4 fill-current"
+  viewBox="0 0 24 24"
+>
+  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+</svg>
               </a>
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#242854] border border-gray-700/80 flex items-center justify-center hover:text-[#C5A059] hover:border-[#C5A059] transition-all" aria-label="Facebook">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -112,7 +124,7 @@ const Footer = ({ onOpenContact }) => {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} MADAARIJ PROJECT MANAGEMENT SERVICES. ALL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} MADAARIJ CONSULTING & ADVISORY. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center gap-6">
             <a href="#contact" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
             <a href="#contact" className="hover:text-gray-400 transition-colors">Terms of Service</a>

@@ -28,7 +28,7 @@ const steps = [
   }
 ]
 
-const ProcessSection = ({ onOpenContact }) => {
+const ProcessSection = () => {
   return (
     <section id="process" className="relative bg-gradient-to-b from-[#F9F1E6] via-[#FAF5EB] to-[#F5ECE0] py-20 lg:py-28 text-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -56,10 +56,10 @@ const ProcessSection = ({ onOpenContact }) => {
             </div>
 
             <div className="pt-2">
-              <button onClick={onOpenContact} className="cursor-pointer px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all shadow-md flex items-center gap-2">
+              <a href="#contact" className="cursor-pointer inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all shadow-md">
                 <span>Start Your Project</span>
                 <ArrowRight size={15} />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -104,12 +104,7 @@ const ProcessSection = ({ onOpenContact }) => {
             })}
           </div>
         </div>
-
-        <div className="flex justify-center items-center gap-2 pt-10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#C88D2B]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-        </div>
+   
 
       </div>
     </section>

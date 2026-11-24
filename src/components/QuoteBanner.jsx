@@ -1,7 +1,7 @@
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { quoteBg } from '../utils/assets'
 
-const QuoteBanner = ({ onOpenContact }) => {
+const QuoteBanner = () => {
   return (
     <section className="relative py-20 lg:py-24 bg-[#1C1E3D] text-white overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-screen pointer-events-none" style={{ backgroundImage: `url(${quoteBg})` }} />
@@ -33,10 +33,13 @@ const QuoteBanner = ({ onOpenContact }) => {
               We empower organizations across the region with world-class project governance, safeguarding capital investments and ensuring visionary projects are delivered flawlessly.
             </p>
             <div>
-              <button onClick={onOpenContact} className="cursor-pointer px-7 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all duration-300 shadow-xl shadow-[#C88D2B]/20 flex items-center gap-2 group">
+              <a
+                href="#contact"
+                className="cursor-pointer inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all duration-300 shadow-xl shadow-[#C88D2B]/20 group"
+              >
                 <span>Partner With Madaarij</span>
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -1,75 +1,172 @@
-import { valueGrowth, aboutTeam, process1 } from '../utils/assets'
-import { TrendingUp, Target, ShieldCheck } from 'lucide-react'
+import { ourDifference } from '../utils/assets'
+import { Compass, Sliders, Target, Briefcase, Award, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react'
 
-const values = [
+const differentiators = [
   {
-    title: 'Growth',
-    tagline: 'Continuous Advancement',
-    description: 'Fostering sustainable development, scalable execution, and continuous innovation in all our client partnerships.',
-    image: valueGrowth,
-    icon: TrendingUp
+    num: '01',
+    title: 'A Strategic Mindset',
+    description: 'We look beyond immediate challenges to identify long-term opportunities.',
+    icon: Compass
   },
   {
-    title: 'Impact',
-    tagline: 'Measurable Value',
-    description: 'Delivering tangible operational results, cost optimization, and enduring business transformation in every project.',
-    image: aboutTeam,
+    num: '02',
+    title: 'Tailored Solutions',
+    description: 'We understand that no two organizations are alike. Our approach adapts to your objectives and requirements.',
+    icon: Sliders
+  },
+  {
+    num: '03',
+    title: 'Analytical Precision',
+    description: 'We rely on structured assessments, sound analysis, and informed recommendations.',
     icon: Target
   },
   {
-    title: 'Integrity',
-    tagline: 'Uncompromising Ethics',
-    description: 'Upholding absolute transparency, rigorous accountability, and ethical governance across every stage of engagement.',
-    image: process1,
-    icon: ShieldCheck
+    num: '04',
+    title: 'Practical Thinking',
+    description: 'Our focus is on solutions that work in real business environments.',
+    icon: Briefcase
+  },
+  {
+    num: '05',
+    title: 'Commitment to Excellence',
+    description: 'We approach every assignment with professionalism, integrity, and attention to detail.',
+    icon: Award
   }
 ]
 
 const ValuesSection = () => {
   return (
-    <section id="values" className="relative bg-[#FAF5EE] py-20 lg:py-28 text-gray-800 overflow-hidden">
+    <section id="difference" className="relative bg-[#FAF5EE] py-20 lg:py-28 text-gray-800 overflow-hidden">
+      {/* Anchor for values alias */}
+      <div id="values" className="absolute -top-24 left-0 pointer-events-none" />
+
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#C88D2B]/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#1C1E3D]/5 blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-14">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
-            OUR VALUES
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#0B132B]">
-            THE PRINCIPLES THAT GUIDE OUR ACTIONS
+        {/* Section Header */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
+            <Sparkles size={12} className="text-[#C88D2B]" />
+            <span>04. OUR DIFFERENCE — WHY WORK WITH US?</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-[#0B132B] leading-tight">
+            BECAUSE BETTER DECISIONS CREATE BETTER OUTCOMES.
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
-            Rooted in excellence and driven by purpose to deliver exceptional outcomes.
-          </p>
+          
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {values.map((val) => {
-            const Icon = val.icon
-            return (
-              <div key={val.title} className="bg-white rounded-2xl p-6 shadow-md border border-amber-200/70 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-start gap-5 group">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shrink-0 shadow-inner border border-gray-100">
-                  <img src={val.image} alt={val.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-[#1C1E3D]/20" />
-                  <div className="absolute bottom-1 right-1 p-1 bg-[#C88D2B] text-white rounded-md">
-                    <Icon size={12} />
-                  </div>
-                </div>
+        {/* Main Content Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          {/* Left Column: High-Res Boardroom Photo & Strategic Impact Box */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-amber-900/15 group">
+              <img
+                src={ourDifference}
+                alt="Madaarij Executive Boardroom Consultation"
+                className="w-full h-[380px] sm:h-[440px] lg:h-[490px] xl:h-[520px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1C1E3D]/80 via-[#1C1E3D]/20 to-transparent" />
+              
+              {/* Badge overlay on image */}
+              <div className="absolute bottom-4 left-4 right-4 bg-[#1C1E3D]/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-amber-300/30 text-white shadow-2xl">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#DFB15B]">
+                  Client Collaboration & Governance
+                </p>
+                <p className="text-xs sm:text-sm font-semibold text-gray-200 mt-1 leading-snug">
+                  Strategic discussions driving measurable, long-term impact.
+                </p>
+              </div>
+            </div>
 
-                <div className="space-y-1.5 flex-1">
-                  <h3 className="text-base sm:text-lg font-bold text-[#0B132B] uppercase tracking-tight group-hover:text-[#C88D2B] transition-colors">
-                    {val.title}
-                  </h3>
-                  <p className="text-[11px] font-semibold text-[#C88D2B] uppercase tracking-wider">
-                    {val.tagline}
-                  </p>
-                  <p className="text-xs text-gray-600 leading-relaxed pt-1">
-                    {val.description}
-                  </p>
+            {/* Strategic Value Proposition Pill Box below image */}
+            <div className="p-4 rounded-xl bg-white border border-amber-200/70 shadow-sm flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-[#FAF3E8] border border-[#C88D2B]/30 flex items-center justify-center text-[#C88D2B]">
+                  <CheckCircle2 size={16} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Proven Execution</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B]">Trusted Advisory & Strategy</p>
                 </div>
               </div>
-            )
-          })}
+              <span className="px-3 py-1 rounded-full bg-[#FAF3E8] border border-[#C88D2B]/30 text-[#C88D2B] text-xs font-black">
+                100% Value
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: 5 Differentiators & Motto */}
+          <div className="lg:col-span-7 space-y-5">
+            
+            {/* Title & Proposition */}
+            <div className="space-y-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase text-[#0B132B] tracking-tight leading-tight">
+                MORE THAN EXPERTISE. A DIFFERENT PERSPECTIVE.
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                We bring a thoughtful, structured, and results-oriented approach to every engagement.
+              </p>
+            </div>
+
+            {/* The 5 Key Differentiator Points */}
+            <div className="space-y-3 pt-1">
+              {differentiators.map((item) => {
+                const IconComponent = item.icon
+                return (
+                  <div
+                    key={item.num}
+                    className="p-3.5 sm:p-4 rounded-xl bg-white border border-amber-200/70 shadow-sm hover:shadow-md hover:border-[#C88D2B] transition-all duration-300 flex items-start gap-4 group"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-[#FAF3E8] border border-[#C88D2B]/30 flex items-center justify-center text-[#C88D2B] shrink-0 group-hover:bg-[#C88D2B] group-hover:text-white transition-all shadow-inner">
+                      <IconComponent size={18} />
+                    </div>
+
+                    <div className="space-y-0.5 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-black text-[#C88D2B]">
+                          {item.num}.
+                        </span>
+                        <h4 className="text-sm sm:text-base font-bold text-[#0B132B] tracking-tight">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-xs sm:text-[13px] text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Closing Motto & CTA Card */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#1C1E3D] text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-amber-400/20">
+              <div>
+                <p className="text-xs sm:text-sm font-bold text-[#DFB15B] italic">
+                  “Because better performance starts with better decisions.”
+                </p>
+                <p className="text-[11px] text-gray-300 mt-0.5">
+                  Let’s collaborate on your next strategic milestone.
+                </p>
+              </div>
+
+              <a
+                href="#contact"
+                className="cursor-pointer px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all shadow-md flex items-center gap-2 shrink-0 group"
+              >
+                <span>Partner With Us</span>
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
