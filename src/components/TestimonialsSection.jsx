@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import {
   testimonial1,
@@ -61,18 +62,19 @@ const testimonials = [
   }
 ]
 
-// Extended with trailing wrap-around copies for seamless multi-item sliding
+// Extended with trailing duplicate copies so the transition from card 5 back to card 1 is 100% seamless
 const displayList = [
   ...testimonials,
-  ...testimonials
+  ...testimonials.slice(0, 3)
 ]
 
 const TestimonialsSection = () => {
-  const [activeIdx, setActiveIdx] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(true)
   const [isPaused, setIsPaused] = useState(false)
   const [itemsPerView, setItemsPerView] = useState(3)
 
-  // Track responsive screen width for exact sliding percentage
+  // Track responsive screen width for items per view
   useEffect(() => {
     const updateItems = () => {
       if (typeof window !== 'undefined') {
@@ -86,16 +88,46 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener('resize', updateItems)
   }, [])
 
-  // Auto-sliding interval: advances every 3.8s, pauses on hover / touch
+  // Auto-slide every 3 seconds; pauses when mouse is hovering over the cards
   useEffect(() => {
     if (isPaused) return
 
     const timer = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % testimonials.length)
-    }, 3800)
+      setIsTransitioning(true)
+      setCurrentIndex((prev) => prev + 1)
+    }, 3000)
 
     return () => clearInterval(timer)
-  }, [isPaused])
+  }, [isPaused, currentIndex])
+
+  // Seamless infinite loop: when reaching index 5 (cloned first card), reset seamlessly to 0
+  useEffect(() => {
+    if (currentIndex >= testimonials.length) {
+      const resetTimer = setTimeout(() => {
+        setIsTransitioning(false)
+        setCurrentIndex(0)
+      }, 700)
+      return () => clearTimeout(resetTimer)
+    }
+  }, [currentIndex])
+
+  // Re-enable CSS transition after instantaneous reset
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true)
+      }, 60)
+      return () => clearTimeout(timer)
+    }
+  }, [isTransitioning])
+
+  const handleDotClick = (idx) => {
+    setIsTransitioning(true)
+    setCurrentIndex(idx)
+  }
+
+  // Each card is exactly (100 / displayList.length)% of the track width
+  const stepPercent = 100 / displayList.length
 
   return (
     <section
@@ -104,8 +136,14 @@ const TestimonialsSection = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-14">
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-14"
+        >
           <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
             OUR TESTIMONIALS
           </p>
@@ -113,22 +151,29 @@ const TestimonialsSection = () => {
             WHAT PEOPLE SAY
           </h2>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
-        {/* Carousel Slider with CSS Transform & Pause-on-Hover */}
-        <div
+        {/* Carousel Slider with CSS Transform & Pause-on-Hover (Fade Up) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
           className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Viewport Mask */}
-          <div className="overflow-hidden py-3">
+          {/* Viewport Mask: Pause is triggered when hovering over the card area */}
+          <div
+            className="overflow-hidden py-3"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
             <div
-              className="flex transition-transform duration-700 ease-out will-change-transform"
+              className="flex will-change-transform"
               style={{
-                transform: `translateX(-${activeIdx * (100 / itemsPerView)}%)`
+                transform: `translateX(-${currentIndex * stepPercent}%)`,
+                transition: isTransitioning ? 'transform 700ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
               }}
             >
               {displayList.map((t, idx) => (
@@ -183,14 +228,14 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          {/* Dot Pagination Controls Only (Arrows Completely Removed) */}
+          {/* Dot Pagination Controls (Reflects current slide 0-4, allows manual navigation) */}
           <div className="flex justify-center items-center gap-2.5 pt-8">
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveIdx(idx)}
+                onClick={() => handleDotClick(idx)}
                 className={`cursor-pointer transition-all duration-300 ${
-                  idx === activeIdx
+                  idx === (currentIndex % testimonials.length)
                     ? 'w-7 h-2.5 bg-[#C88D2B] rounded-full shadow-sm'
                     : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400 rounded-full'
                 }`}
@@ -199,11 +244,11 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>
   )
 }
 
-export default TestimonialsSection
+export default TestimonialsSection;

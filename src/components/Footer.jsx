@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
 import BrandLogo from './BrandLogo'
 
@@ -11,28 +12,34 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Floating Top Contact Bar */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 text-gray-800 shadow-2xl mb-14 border border-amber-200/60 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex items-center">
+        {/* Floating Top Contact Bar (Fade Up) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="bg-white rounded-2xl p-6 sm:p-8 text-gray-800 shadow-2xl mb-14 border border-amber-200/60 flex flex-col lg:flex-row items-center justify-between gap-6"
+        >
+          <div className="flex items-center justify-center lg:justify-start">
             <BrandLogo variant="light" />
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-end gap-6 sm:gap-10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#FAF5EE] border border-amber-200 flex items-center justify-center text-[#C88D2B]">
+              <div className="w-10 h-10 rounded-full bg-[#FAF5EE] border border-amber-200 flex items-center justify-center text-[#C88D2B] shrink-0">
                 <Phone size={18} />
               </div>
-              <div>
+              <div className="text-left">
                 <p className="text-[10px] font-bold text-[#C88D2B] uppercase tracking-wider">Call Us</p>
                 <p className="text-xs sm:text-sm font-semibold text-[#0B132B]">+966 11 234 5678</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#FAF5EE] border border-amber-200 flex items-center justify-center text-[#C88D2B]">
+              <div className="w-10 h-10 rounded-full bg-[#FAF5EE] border border-amber-200 flex items-center justify-center text-[#C88D2B] shrink-0">
                 <Mail size={18} />
               </div>
-              <div>
+              <div className="text-left">
                 <p className="text-[10px] font-bold text-[#C88D2B] uppercase tracking-wider">Email Us</p>
                 <a href="mailto:connect@madcons.com" className="text-xs sm:text-sm font-semibold text-[#0B132B] hover:text-[#C88D2B] transition-colors">
                   connect@madcons.com
@@ -42,26 +49,32 @@ const Footer = () => {
 
             <a
               href="#contact"
-              className="cursor-pointer px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all shadow-md flex items-center gap-2"
+              className="cursor-pointer px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C88D2B] text-white hover:bg-[#D49B28] transition-all shadow-md flex items-center justify-center gap-2"
             >
               <span>Book Call</span>
               <ArrowRight size={14} />
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Footer Navigation Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-gray-800">
+        {/* Footer Navigation Columns (Fade Up, Centered on Mobile, Left-aligned on Desktop) */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-gray-800 text-center md:text-left"
+        >
           <div className="lg:col-span-2 space-y-4">
             <h3 className="text-lg font-black tracking-tight uppercase">
               <span className="text-white">MADA</span>
               <span className="text-[#C5A059]">ARIJ</span>{' '}
               <span className="text-[#C5A059]">CONSULTING & ADVISORY</span>
             </h3>
-            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
               A dynamic and forward-thinking project management consulting firm dedicated to turning visions into reality through strategic planning, precision execution, and measurable results.
             </p>
-            <div className="flex items-center gap-3 pt-2 text-gray-400">
+            <div className="flex items-center justify-center md:justify-start gap-3 pt-2 text-gray-400">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-[#242854] border border-gray-700/80 flex items-center justify-center hover:text-[#C5A059] hover:border-[#C5A059] transition-all" aria-label="LinkedIn">
                 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -111,21 +124,21 @@ const Footer = () => {
               Offices
             </h4>
             <div className="space-y-2 text-xs text-gray-400">
-              <div className="flex items-start gap-2">
+              <div className="flex items-start justify-center md:justify-start gap-2">
                 <MapPin size={14} className="text-[#C88D2B] shrink-0 mt-0.5" />
                 <span>King Fahd Road, Riyadh, Kingdom of Saudi Arabia</span>
               </div>
-              <div className="flex items-start gap-2">
+              <div className="flex items-start justify-center md:justify-start gap-2">
                 <MapPin size={14} className="text-[#C88D2B] shrink-0 mt-0.5" />
                 <span>Business Bay, Downtown Dubai, UAE</span>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-left">
           <p>© {new Date().getFullYear()} MADAARIJ CONSULTING & ADVISORY. ALL RIGHTS RESERVED.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-6">
             <a href="#contact" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
             <a href="#contact" className="hover:text-gray-400 transition-colors">Terms of Service</a>
             <a href="#contact" className="hover:text-gray-400 transition-colors">Legal Governance</a>
@@ -137,4 +150,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Footer;

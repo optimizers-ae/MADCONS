@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { quoteBg } from '../utils/assets'
 
@@ -11,7 +12,15 @@ const QuoteBanner = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          <div className="lg:col-span-5 space-y-2">
+          
+          {/* Left Column: Heading (Fade from Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-5 space-y-2"
+          >
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C88D2B]">
               <Sparkles size={14} />
               <span>Our Philosophy</span>
@@ -23,9 +32,16 @@ const QuoteBanner = () => {
                 CHANCE
               </span>
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7 space-y-6 lg:border-l lg:border-gray-800/80 lg:pl-10">
+          {/* Right Column: Statement & CTA (Fade from Right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-7 space-y-6 lg:border-l lg:border-gray-800/80 lg:pl-10"
+          >
             <p className="text-base sm:text-lg md:text-xl font-medium text-gray-200 leading-relaxed uppercase tracking-wide">
               THEY ARE BUILT ON STRATEGY, PRECISION, AND DEDICATION. LET US HELP YOU ACHIEVE YOUR HIGHEST POTENTIAL.
             </p>
@@ -41,11 +57,12 @@ const QuoteBanner = () => {
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
   )
 }
 
-export default QuoteBanner
+export default QuoteBanner;

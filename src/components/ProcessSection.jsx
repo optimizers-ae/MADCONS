@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Search, Compass, Sliders, ArrowRight } from 'lucide-react'
 import { process1, process2, process3 } from '../utils/assets'
 
@@ -34,7 +35,15 @@ const ProcessSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          <div className="lg:col-span-4 space-y-6">
+          
+          {/* Left Column: Governance Strategy (Fade from Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-4 space-y-6"
+          >
             <div className="space-y-2">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
                 HOW WE DELIVER
@@ -48,12 +57,18 @@ const ProcessSection = () => {
               Our structured, client-centric methodology ensures clarity, rigorous accountability, and outstanding outcomes from initial concept through final commissioning.
             </p>
 
-            <div className="p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-amber-200 shadow-sm space-y-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-amber-200 shadow-sm space-y-2"
+            >
               <p className="text-xs font-bold uppercase tracking-wider text-[#C88D2B]">Structured Governance</p>
               <p className="text-xs text-gray-600 leading-relaxed">
                 Every project is guided by international standards (PMI, ISO) tailored to regional regulatory compliance in Saudi Arabia and the GCC.
               </p>
-            </div>
+            </motion.div>
 
             <div className="pt-2">
               <a href="#contact" className="cursor-pointer inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all shadow-md">
@@ -61,13 +76,21 @@ const ProcessSection = () => {
                 <ArrowRight size={15} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
+          {/* Right Column: 3 Process Cards (Staggered Fade from Right) */}
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {steps.map((st) => {
+            {steps.map((st, idx) => {
               const IconComponent = st.icon
               return (
-                <div key={st.step} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-amber-200/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                <motion.div
+                  key={st.step}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: idx * 0.15, ease: 'easeOut' }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg border border-amber-200/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
+                >
                   <div className="relative h-44 overflow-hidden">
                     <img src={st.image} alt={st.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -99,16 +122,15 @@ const ProcessSection = () => {
                       <span className="text-[#C88D2B] font-semibold">Stage Gate</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
         </div>
-   
 
       </div>
     </section>
   )
 }
 
-export default ProcessSection
+export default ProcessSection;

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { workItSecurity, workStrategicPlan, workLogistics, workIndustrial } from '../utils/assets'
 
@@ -45,7 +46,14 @@ const WorkDeliveredSection = () => {
     <section id="projects" className="relative bg-[#FAF7F2] py-20 lg:py-28 text-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-14">
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-14"
+        >
           <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
             RECENT COMPLETED
           </p>
@@ -56,11 +64,19 @@ const WorkDeliveredSection = () => {
             Explore some of our successful client collaborations and measurable project outcomes.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
+        {/* 4 Cards Grid (Staggered Fade Up) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((proj) => (
-            <div key={proj.id} className="group relative bg-[#1C1E3D] rounded-2xl overflow-hidden shadow-xl border border-gray-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col justify-between">
+          {projects.map((proj, idx) => (
+            <motion.div
+              key={proj.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: 'easeOut' }}
+              className="group relative bg-[#1C1E3D] rounded-2xl overflow-hidden shadow-xl border border-gray-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col justify-between"
+            >
               
               <div className="relative h-52 sm:h-56 overflow-hidden">
                 <img src={proj.image} alt={proj.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -92,7 +108,7 @@ const WorkDeliveredSection = () => {
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -101,4 +117,4 @@ const WorkDeliveredSection = () => {
   )
 }
 
-export default WorkDeliveredSection
+export default WorkDeliveredSection;

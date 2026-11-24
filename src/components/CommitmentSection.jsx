@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { MessageSquare, Award, CheckCircle, Users } from 'lucide-react'
 
 const commitments = [
@@ -38,7 +39,15 @@ const CommitmentSection = () => {
       <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#2C3066]/30 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-14">
+        
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-14"
+        >
           <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
             WHAT YOU CAN EXPECT
           </p>
@@ -49,13 +58,21 @@ const CommitmentSection = () => {
             Excellence, transparency, and measurable results at every step of your project journey.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
+        {/* 4 Cards Grid (Staggered Fade Up) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {commitments.map((card) => {
+          {commitments.map((card, idx) => {
             const IconComponent = card.icon
             return (
-              <div key={card.id} className="bg-white rounded-2xl p-6 sm:p-7 text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between group border border-amber-100">
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: 'easeOut' }}
+                className="bg-white rounded-2xl p-6 sm:p-7 text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between group border border-amber-100"
+              >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-full bg-[#FAF3E8] border border-[#C88D2B]/40 flex items-center justify-center text-[#C88D2B] group-hover:bg-[#C88D2B] group-hover:text-white transition-all shadow-sm">
                     <IconComponent size={22} />
@@ -79,15 +96,14 @@ const CommitmentSection = () => {
                   <span>Pillar 0{card.id}</span>
                   <span className="w-2 h-2 rounded-full bg-[#C88D2B]" />
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>
 
-        
       </div>
     </section>
   )
 }
 
-export default CommitmentSection
+export default CommitmentSection;

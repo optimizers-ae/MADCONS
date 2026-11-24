@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react'
 import {
   serviceProcurement,
@@ -91,8 +92,14 @@ const ServicesSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section Header */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-10 sm:mb-14">
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-10 sm:mb-14"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#DFB15B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
             <Sparkles size={12} className="text-[#DFB15B]" />
             <span>03. WHAT WE DO — FOUR PILLARS OF EXPERTISE</span>
@@ -105,10 +112,16 @@ const ServicesSection = () => {
             Delivering insight, structure, and execution excellence across four core domains designed to make every decision count and every operation perform better.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
-        {/* Featured Service Spotlight Showcase */}
-        <div className="relative bg-[#FAF5EE] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 text-gray-800 shadow-2xl border border-amber-200/60">
+        {/* Featured Service Spotlight Showcase (Fade Up) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="relative bg-[#FAF5EE] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 text-gray-800 shadow-2xl border border-amber-200/60"
+        >
 
           {/* Arrow Nav Buttons */}
           <button
@@ -140,8 +153,14 @@ const ServicesSection = () => {
                   }`}
                   aria-hidden={i !== currentIdx}
                 >
-                  {/* Left: Image */}
-                  <div className="lg:col-span-6">
+                  {/* Left: Image (Animated from Left) */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="lg:col-span-6"
+                  >
                     <div className="relative rounded-2xl overflow-hidden shadow-xl border border-amber-900/10 h-64 sm:h-80 md:h-96 group">
                       <img
                         src={service.image}
@@ -152,10 +171,16 @@ const ServicesSection = () => {
                         {service.category}
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Right: Content */}
-                  <div className="lg:col-span-6 space-y-5 text-left">
+                  {/* Right: Content (Animated from Right) */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="lg:col-span-6 space-y-5 text-left"
+                  >
                     <div>
                       <p className="text-xs sm:text-sm font-extrabold text-[#C88D2B] tracking-[0.2em] uppercase">
                         {service.category}
@@ -198,7 +223,7 @@ const ServicesSection = () => {
                         <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               ))}
             </div>
@@ -219,11 +244,11 @@ const ServicesSection = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>
   )
 }
 
-export default ServicesSection
+export default ServicesSection;

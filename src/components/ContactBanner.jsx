@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Building2, Send, CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react'
 
 const ContactBanner = () => {
@@ -27,8 +28,14 @@ const ContactBanner = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-14 lg:mb-16">
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-14 lg:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
             <MessageSquare size={13} className="text-[#C88D2B]" />
             <span>06. CONTACT — START A CONVERSATION</span>
@@ -42,13 +49,19 @@ const ContactBanner = () => {
           </h2>
           
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
         {/* Main 2-Column Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
-          {/* Left Column: Narrative Copy & Official Info Cards */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Column: Narrative Copy & Official Info Cards (Fade from Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-6 space-y-6"
+          >
             
             {/* The Provocative Opening */}
             <div className="space-y-3">
@@ -65,13 +78,6 @@ const ContactBanner = () => {
                 Let's talk about possibilities.
               </p>
             </div>
-
-            {/* Signature Tagline Callout */}
-            {/* <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#1C1E3D] via-[#242854] to-[#1C1E3D] text-white border-l-4 border-[#C88D2B] shadow-xl">
-              <p className="text-xs sm:text-sm font-black tracking-widest uppercase text-amber-200">
-                LET'S MOVE FORWARD .. LET'S CREATE SOMETHING BETTER
-              </p>
-            </div> */}
 
             {/* Official Contact Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
@@ -141,10 +147,16 @@ const ContactBanner = () => {
 
             </div>
 
-          </div>
+          </motion.div>
 
-          {/* Right Column: Direct Consultation Message Form */}
-          <div className="lg:col-span-6">
+          {/* Right Column: Direct Consultation Message Form (Fade from Right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-6"
+          >
             <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-amber-200/70">
               
               <div className="space-y-1 pb-4 border-b border-gray-100">
@@ -248,7 +260,7 @@ const ContactBanner = () => {
               )}
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -257,4 +269,4 @@ const ContactBanner = () => {
   )
 }
 
-export default ContactBanner
+export default ContactBanner;

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ourDifference } from '../utils/assets'
 import { Compass, Sliders, Target, Briefcase, Award, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react'
 
@@ -46,8 +47,14 @@ const ValuesSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-12 sm:mb-16">
+        {/* Section Header (Fade from Top) */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center space-y-3 max-w-3xl mx-auto mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
             <Sparkles size={12} className="text-[#C88D2B]" />
             <span>04. OUR DIFFERENCE — WHY WORK WITH US?</span>
@@ -58,13 +65,19 @@ const ValuesSection = () => {
           </h2>
           
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
-        </div>
+        </motion.div>
 
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: High-Res Boardroom Photo & Strategic Impact Box */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Left Column: High-Res Boardroom Photo & Strategic Impact Box (Fade from Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-5 space-y-4"
+          >
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-amber-900/15 group">
               <img
                 src={ourDifference}
@@ -85,7 +98,13 @@ const ValuesSection = () => {
             </div>
 
             {/* Strategic Value Proposition Pill Box below image */}
-            <div className="p-4 rounded-xl bg-white border border-amber-200/70 shadow-sm flex items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-4 rounded-xl bg-white border border-amber-200/70 shadow-sm flex items-center justify-between"
+            >
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-[#FAF3E8] border border-[#C88D2B]/30 flex items-center justify-center text-[#C88D2B]">
                   <CheckCircle2 size={16} />
@@ -98,29 +117,39 @@ const ValuesSection = () => {
               <span className="px-3 py-1 rounded-full bg-[#FAF3E8] border border-[#C88D2B]/30 text-[#C88D2B] text-xs font-black">
                 100% Value
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column: 5 Differentiators & Motto */}
+          {/* Right Column: 5 Differentiators & Motto (Fade from Right) */}
           <div className="lg:col-span-7 space-y-5">
             
-            {/* Title & Proposition */}
-            <div className="space-y-2">
+            {/* Title & Proposition (Fade from Right) */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="space-y-2"
+            >
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase text-[#0B132B] tracking-tight leading-tight">
                 MORE THAN EXPERTISE. A DIFFERENT PERSPECTIVE.
               </h3>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 We bring a thoughtful, structured, and results-oriented approach to every engagement.
               </p>
-            </div>
+            </motion.div>
 
-            {/* The 5 Key Differentiator Points */}
+            {/* The 5 Key Differentiator Points (Staggered Fade from Right) */}
             <div className="space-y-3 pt-1">
-              {differentiators.map((item) => {
+              {differentiators.map((item, idx) => {
                 const IconComponent = item.icon
                 return (
-                  <div
+                  <motion.div
                     key={item.num}
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
                     className="p-3.5 sm:p-4 rounded-xl bg-white border border-amber-200/70 shadow-sm hover:shadow-md hover:border-[#C88D2B] transition-all duration-300 flex items-start gap-4 group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-[#FAF3E8] border border-[#C88D2B]/30 flex items-center justify-center text-[#C88D2B] shrink-0 group-hover:bg-[#C88D2B] group-hover:text-white transition-all shadow-inner">
@@ -140,13 +169,19 @@ const ValuesSection = () => {
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 )
               })}
             </div>
 
-            {/* Closing Motto & CTA Card */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#1C1E3D] text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-amber-400/20">
+            {/* Closing Motto & CTA Card (Fade Up) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
+              className="p-4 sm:p-5 rounded-2xl bg-[#1C1E3D] text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-amber-400/20"
+            >
               <div>
                 <p className="text-xs sm:text-sm font-bold text-[#DFB15B] italic">
                   “Because better performance starts with better decisions.”
@@ -163,7 +198,7 @@ const ValuesSection = () => {
                 <span>Partner With Us</span>
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
               </a>
-            </div>
+            </motion.div>
 
           </div>
 
@@ -174,4 +209,4 @@ const ValuesSection = () => {
   )
 }
 
-export default ValuesSection
+export default ValuesSection;

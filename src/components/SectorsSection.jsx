@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   sectorsLab,
   iconHealth, iconRetail, iconTech, iconConstruction, iconLogistics,
@@ -27,19 +28,40 @@ const SectorsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-5 relative">
+          
+          {/* Left Column: Image with 11+ Sectors Badge (Fade from Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group">
               <img src={sectorsLab} alt="Industries We Serve - Healthcare & Laboratories" className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1C1E3D]/40 via-transparent to-transparent" />
             </div>
 
-            <div className="absolute -bottom-4 left-4 sm:left-6 bg-[#1C1E3D] text-white px-5 py-3 rounded-xl shadow-xl border-l-4 border-[#C88D2B]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 15 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -bottom-4 left-4 sm:left-6 bg-[#1C1E3D] text-white px-5 py-3 rounded-xl shadow-xl border-l-4 border-[#C88D2B]"
+            >
               <p className="text-xs font-semibold text-[#C5A059] uppercase tracking-wider">Multi-Industry Acumen</p>
               <p className="text-sm font-bold text-gray-200">11+ Specialized Sectors</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="lg:col-span-7 space-y-6">
+          {/* Right Column: Copy & Sector Badges (Fade from Right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-7 space-y-6"
+          >
             <div className="space-y-2">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
                 SECTOR COVERED
@@ -65,8 +87,7 @@ const SectorsSection = () => {
               })}
             </div>
 
-          
-          </div>
+          </motion.div>
         </div>
 
       </div>
@@ -74,4 +95,4 @@ const SectorsSection = () => {
   )
 }
 
-export default SectorsSection
+export default SectorsSection;
