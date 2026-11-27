@@ -55,9 +55,9 @@ const ValuesSection = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center space-y-3 max-w-3xl mx-auto mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[12px] sm:text-lg font-bold tracking-[0.2em] uppercase">
             <Sparkles size={12} className="text-[#C88D2B]" />
-            <span>04. OUR DIFFERENCE — WHY WORK WITH US?</span>
+            <span>OUR DIFFERENCE — WHY WORK WITH US?</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-[#0B132B] leading-tight">
@@ -88,10 +88,10 @@ const ValuesSection = () => {
               
               {/* Badge overlay on image */}
               <div className="absolute bottom-4 left-4 right-4 bg-[#1C1E3D]/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-amber-300/30 text-white shadow-2xl">
-                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#DFB15B]">
+                <p className="text-[15px] sm:text-base font-bold uppercase tracking-widest text-[#DFB15B]">
                   Client Collaboration & Governance
                 </p>
-                <p className="text-xs sm:text-sm font-semibold text-gray-200 mt-1 leading-snug">
+                <p className="text-[15px] sm:text-base  text-xs sm:text-sm font-semibold text-gray-200 mt-1 leading-snug">
                   Strategic discussions driving measurable, long-term impact.
                 </p>
               </div>
@@ -110,11 +110,11 @@ const ValuesSection = () => {
                   <CheckCircle2 size={16} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Proven Execution</p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B]">Trusted Advisory & Strategy</p>
+                  <p className="text-[12px] font-bold text-gray-500 uppercase tracking-wider">Proven Execution</p>
+                  <p className="text-base sm:text-lg font-extrabold text-[#0B132B]">Trusted Advisory & Strategy</p>
                 </div>
               </div>
-              <span className="px-3 py-1 rounded-full bg-[#FAF3E8] border border-[#C88D2B]/30 text-[#C88D2B] text-xs font-black">
+              <span className="px-2 py-1 text-center rounded-full bg-[#FAF3E8] border border-[#C88D2B]/30 text-[#C88D2B] text-xs font-black">
                 100% Value
               </span>
             </motion.div>
@@ -134,7 +134,7 @@ const ValuesSection = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase text-[#0B132B] tracking-tight leading-tight">
                 MORE THAN EXPERTISE. A DIFFERENT PERSPECTIVE.
               </h3>
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                 We bring a thoughtful, structured, and results-oriented approach to every engagement.
               </p>
             </motion.div>
@@ -158,14 +158,14 @@ const ValuesSection = () => {
 
                     <div className="space-y-0.5 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-black text-[#C88D2B]">
+                        <span className="text-[12px] font-black text-[#C88D2B]">
                           {item.num}.
                         </span>
-                        <h4 className="text-sm sm:text-base font-bold text-[#0B132B] tracking-tight">
+                        <h4 className="text-base sm:text-lg font-bold text-[#0B132B] tracking-tight">
                           {item.title}
                         </h4>
                       </div>
-                      <p className="text-xs sm:text-[13px] text-gray-600 leading-relaxed">
+                      <p className="text-[14px] sm:text-base text-gray-600 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -183,10 +183,10 @@ const ValuesSection = () => {
               className="p-4 sm:p-5 rounded-2xl bg-[#1C1E3D] text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-amber-400/20"
             >
               <div>
-                <p className="text-xs sm:text-sm font-bold text-[#DFB15B] italic">
+                <p className="text-base sm:text-base font-bold text-[#DFB15B] italic">
                   “Because better performance starts with better decisions.”
                 </p>
-                <p className="text-[11px] text-gray-300 mt-0.5">
+                <p className="text-[13px] text-gray-300 mt-0.5">
                   Let’s collaborate on your next strategic milestone.
                 </p>
               </div>

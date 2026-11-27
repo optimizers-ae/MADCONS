@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 import sec1 from '../../src/assets/sec1.webp'
 
-const AboutSection = () => {
+const  AboutSection = () => {
   return (
     <section id="about" className="relative bg-[#FAF8F5] text-gray-800 py-20 lg:py-28 overflow-hidden">
       {/* Top Left Mustard Geometric Accent Block */}
@@ -58,7 +58,7 @@ const AboutSection = () => {
               transition={{ duration: 0.6 }}
               className="space-y-2"
             >
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
+              <p className="text-base font-bold uppercase tracking-widest text-[#C88D2B]">
                 WHO WE ARE 
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B132B] uppercase tracking-tight leading-tight">
@@ -71,7 +71,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-gray-600 text-sm sm:text-base leading-relaxed"
+              className="text-gray-600 text-base sm:text-lg leading-relaxed"
             >
               At <b>MADAARIJ Consulting & Advisory </b>, we are driven by a simple belief that Every organization has the
               potential to achieve more with the right strategy, the right structure, and the right expertise.
@@ -82,7 +82,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-gray-600 text-sm sm:text-base leading-relaxed"
+              className="text-gray-600 text-base sm:text-lg leading-relaxed"
             >
               We bring together analytical thinking, professional insight, and practical management solutions to
               help businesses and institutions navigate complexity and unlock their full potential.
@@ -97,15 +97,15 @@ const AboutSection = () => {
             >
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700"> <b>INSIGHT </b> — Understanding challenges, identifying opportunities, and seeing the bigger picture</span>
+                <span className="text-base sm:text-lg font-medium text-gray-700"> <b>INSIGHT </b> — Understanding challenges, identifying opportunities, and seeing the bigger picture</span>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700"><b>STRATEGY </b> — Developing intelligent, structured, and tailored solutions</span>
+                <span className="text-base sm:text-lg font-medium text-gray-700"><b>STRATEGY </b> — Developing intelligent, structured, and tailored solutions</span>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-[#C88D2B] shrink-0 mt-0.5" size={18} />
-                <span className="text-sm font-medium text-gray-700"><b>EXECUTION </b> — Turning recommendations into meaningful actions and measurable improvements</span>
+                <span className="text-base sm:text-lg font-medium text-gray-700"><b>EXECUTION </b> — Turning recommendations into meaningful actions and measurable improvements</span>
               </div>
             </motion.div>
 

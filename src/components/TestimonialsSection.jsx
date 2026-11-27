@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import {
@@ -62,11 +62,13 @@ const testimonials = [
   }
 ]
 
-// Extended with trailing duplicate copies so the transition from card 5 back to card 1 is 100% seamless
+// Trailing duplicates so the transition from card 5 back to card 1 is seamless
 const displayList = [
   ...testimonials,
   ...testimonials.slice(0, 3)
 ]
+
+const SWIPE_THRESHOLD = 50 // px needed to trigger a slide change
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -74,7 +76,13 @@ const TestimonialsSection = () => {
   const [isPaused, setIsPaused] = useState(false)
   const [itemsPerView, setItemsPerView] = useState(3)
 
-  // Track responsive screen width for items per view
+  // Touch / swipe state
+  const [dragX, setDragX] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const touchStart = useRef({ x: 0, y: 0 })
+  const axisLock = useRef(null) // 'x' | 'y' | null
+
+  // Responsive items per view
   useEffect(() => {
     const updateItems = () => {
       if (typeof window !== 'undefined') {
@@ -88,7 +96,7 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener('resize', updateItems)
   }, [])
 
-  // Auto-slide every 3 seconds; pauses when mouse is hovering over the cards
+  // Auto-slide every 3 seconds; pauses on hover / touch
   useEffect(() => {
     if (isPaused) return
 
@@ -100,7 +108,7 @@ const TestimonialsSection = () => {
     return () => clearInterval(timer)
   }, [isPaused, currentIndex])
 
-  // Seamless infinite loop: when reaching index 5 (cloned first card), reset seamlessly to 0
+  // Seamless loop: at the cloned first card, silently reset to 0
   useEffect(() => {
     if (currentIndex >= testimonials.length) {
       const resetTimer = setTimeout(() => {
@@ -111,7 +119,7 @@ const TestimonialsSection = () => {
     }
   }, [currentIndex])
 
-  // Re-enable CSS transition after instantaneous reset
+  // Re-enable CSS transition after instant reset
   useEffect(() => {
     if (!isTransitioning) {
       const timer = setTimeout(() => {
@@ -126,8 +134,64 @@ const TestimonialsSection = () => {
     setCurrentIndex(idx)
   }
 
-  // Each card is exactly (100 / displayList.length)% of the track width
-  const stepPercent = 100 / displayList.length
+  const goNext = () => {
+    setIsTransitioning(true)
+    setCurrentIndex((prev) => prev + 1)
+  }
+
+  const goPrev = () => {
+    if (currentIndex <= 0) {
+      // Jump (no animation) to the cloned first card, then slide back to the last real card
+      setIsTransitioning(false)
+      setCurrentIndex(testimonials.length)
+      setTimeout(() => {
+        setIsTransitioning(true)
+        setCurrentIndex(testimonials.length - 1)
+      }, 30)
+    } else {
+      setIsTransitioning(true)
+      setCurrentIndex((prev) => prev - 1)
+    }
+  }
+
+  // ---- Touch handlers ----
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0]
+    touchStart.current = { x: touch.clientX, y: touch.clientY }
+    axisLock.current = null
+    setIsPaused(true)
+  }
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0]
+    const dx = touch.clientX - touchStart.current.x
+    const dy = touch.clientY - touchStart.current.y
+
+    // Decide once whether this gesture is horizontal (swipe) or vertical (page scroll)
+    if (!axisLock.current) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return
+      axisLock.current = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y'
+    }
+
+    if (axisLock.current === 'x') {
+      setIsDragging(true)
+      setDragX(dx)
+    }
+  }
+
+  const handleTouchEnd = () => {
+    if (axisLock.current === 'x') {
+      if (dragX <= -SWIPE_THRESHOLD) goNext()
+      else if (dragX >= SWIPE_THRESHOLD) goPrev()
+    }
+    setIsDragging(false)
+    setDragX(0)
+    axisLock.current = null
+    setIsPaused(false)
+  }
+
+  // Each card is (100 / itemsPerView)% of the visible width
+  const stepPercent = 100 / itemsPerView
 
   return (
     <section
@@ -135,8 +199,8 @@ const TestimonialsSection = () => {
       className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F5ECE0] py-20 lg:py-28 text-gray-800 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header (Fade from Top) */}
+
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +217,7 @@ const TestimonialsSection = () => {
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
         </motion.div>
 
-        {/* Carousel Slider with CSS Transform & Pause-on-Hover (Fade Up) */}
+        {/* Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -161,19 +225,24 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
           className="relative"
         >
-          {/* Viewport Mask: Pause is triggered when hovering over the card area */}
           <div
             className="overflow-hidden py-3"
+            style={{ touchAction: 'pan-y' }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
           >
             <div
               className="flex will-change-transform"
               style={{
-                transform: `translateX(-${currentIndex * stepPercent}%)`,
-                transition: isTransitioning ? 'transform 700ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
+                transform: `translateX(calc(-${currentIndex * stepPercent}% + ${dragX}px))`,
+                transition:
+                  isTransitioning && !isDragging
+                    ? 'transform 700ms cubic-bezier(0.25, 1, 0.5, 1)'
+                    : 'none'
               }}
             >
               {displayList.map((t, idx) => (
@@ -183,7 +252,7 @@ const TestimonialsSection = () => {
                   className="shrink-0 p-2.5 sm:p-3"
                 >
                   <div className="bg-white rounded-2xl p-7 shadow-lg border border-amber-200/70 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full relative group select-none">
-                    
+
                     <div className="absolute top-6 right-6 text-amber-200 group-hover:text-[#C88D2B]/30 transition-colors">
                       <Quote size={28} />
                     </div>
@@ -191,7 +260,12 @@ const TestimonialsSection = () => {
                     <div className="space-y-4">
                       <div className="flex items-center gap-4">
                         <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#C88D2B] p-0.5 shadow-md shrink-0">
-                          <img src={t.avatar} alt={t.name} className="w-full h-full object-cover rounded-full" />
+                          <img
+                            src={t.avatar}
+                            alt={t.name}
+                            draggable={false}
+                            className="w-full h-full object-cover rounded-full"
+                          />
                         </div>
                         <div>
                           <h3 className="text-sm font-bold text-[#0B132B] uppercase">
@@ -228,7 +302,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          {/* Dot Pagination Controls (Reflects current slide 0-4, allows manual navigation) */}
+          {/* Dot Pagination */}
           <div className="flex justify-center items-center gap-2.5 pt-8">
             {testimonials.map((_, idx) => (
               <button

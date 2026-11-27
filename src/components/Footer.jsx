@@ -66,11 +66,9 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-gray-800 text-center md:text-left"
         >
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-lg font-black tracking-tight uppercase">
-              <span className="text-white">MADA</span>
-              <span className="text-[#C5A059]">ARIJ</span>{' '}
-              <span className="text-[#C5A059]">CONSULTING & ADVISORY</span>
-            </h3>
+            <div className="flex justify-center md:justify-start">
+              <BrandLogo variant="dark" />
+            </div>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
               A dynamic and forward-thinking project management consulting firm dedicated to turning visions into reality through strategic planning, precision execution, and measurable results.
             </p>

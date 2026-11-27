@@ -45,7 +45,7 @@ const ProcessSection = () => {
             className="lg:col-span-4 space-y-6"
           >
             <div className="space-y-2">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
+              <p className="text-sm sm:text-base font-bold uppercase tracking-widest text-[#C88D2B]">
                 HOW WE DELIVER
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#0B132B]">
@@ -53,7 +53,7 @@ const ProcessSection = () => {
               </h2>
             </div>
 
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
               Our structured, client-centric methodology ensures clarity, rigorous accountability, and outstanding outcomes from initial concept through final commissioning.
             </p>
 
@@ -64,8 +64,8 @@ const ProcessSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-amber-200 shadow-sm space-y-2"
             >
-              <p className="text-xs font-bold uppercase tracking-wider text-[#C88D2B]">Structured Governance</p>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-base font-bold uppercase tracking-wider text-[#C88D2B]">Structured Governance</p>
+              <p className="text-base text-gray-600 leading-relaxed">
                 Every project is guided by international standards (PMI, ISO) tailored to regional regulatory compliance in Saudi Arabia and the GCC.
               </p>
             </motion.div>
@@ -106,13 +106,13 @@ const ProcessSection = () => {
 
                   <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                      <h3 className="text-xs sm:text-sm font-extrabold uppercase text-[#0B132B] tracking-tight group-hover:text-[#C88D2B] transition-colors">
+                      <h3 className="text-lg sm:text-[14.9px] font-extrabold uppercase text-[#0B132B] tracking-tight group-hover:text-[#C88D2B] transition-colors">
                         {st.title}
                       </h3>
-                      <p className="text-[11px] font-semibold text-[#C88D2B] uppercase tracking-wider mt-0.5">
+                      <p className="text-[12px] font-semibold text-[#C88D2B] uppercase tracking-wider mt-0.5">
                         {st.subtitle}
                       </p>
-                      <p className="text-xs text-gray-600 leading-relaxed mt-2">
+                      <p className="text-[16px] m:text-[14px] text-gray-600 leading-relaxed mt-2">
                         {st.description}
                       </p>
                     </div>

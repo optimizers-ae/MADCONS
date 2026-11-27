@@ -38,7 +38,7 @@ const ContactBanner = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#C88D2B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
             <MessageSquare size={13} className="text-[#C88D2B]" />
-            <span>06. CONTACT — START A CONVERSATION</span>
+            <span>CONTACT — START A CONVERSATION</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-[#0B132B] leading-tight">
@@ -68,10 +68,10 @@ const ContactBanner = () => {
               <h3 className="text-lg sm:text-xl font-black uppercase text-[#0B132B] tracking-tight">
                 Have a challenge? An idea? An ambitious project?
               </h3>
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                 Whether you are looking to improve efficiency, strengthen procurement, manage projects, or rethink your operations, we are ready to explore the right solutions with you.
               </p>
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                 We welcome the opportunity to understand your objectives, explore possibilities, and support your next business initiative.
               </p>
               <p className="text-base sm:text-lg font-bold text-[#C88D2B] pt-1">
@@ -166,7 +166,7 @@ const ContactBanner = () => {
                 <h3 className="text-xl sm:text-2xl font-black uppercase text-[#0B132B] tracking-tight">
                   Send A Direct Message
                 </h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-base text-gray-600">
                   Fill in your details below and our advisory consultants will get in touch promptly.
                 </p>
               </div>

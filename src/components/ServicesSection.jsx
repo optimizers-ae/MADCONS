@@ -12,7 +12,7 @@ const servicesData = [
   {
     id: 1,
     num: '01',
-    category: '01 / PROCUREMENT',
+    category: 'PROCUREMENT',
     shortTitle: 'Procurement',
     title: 'VALUE BEGINS WITH THE RIGHT CHOICE.',
     description:
@@ -30,7 +30,7 @@ const servicesData = [
   {
     id: 2,
     num: '02',
-    category: '02 / PROJECT MANAGEMENT',
+    category: 'PROJECT MANAGEMENT',
     shortTitle: 'Project Management',
     title: 'GREAT IDEAS DESERVE GREAT EXECUTION.',
     description:
@@ -47,7 +47,7 @@ const servicesData = [
   {
     id: 3,
     num: '03',
-    category: '03 / ADMINISTRATIVE STUDIES',
+    category: 'ADMINISTRATIVE STUDIES',
     shortTitle: 'Administrative Studies',
     title: 'BETTER STRUCTURES. STRONGER ORGANIZATIONS.',
     description:
@@ -63,7 +63,7 @@ const servicesData = [
   {
     id: 4,
     num: '04',
-    category: '04 / OPERATIONAL ANALYSIS',
+    category: 'OPERATIONAL ANALYSIS',
     shortTitle: 'Operational Analysis',
     title: 'SEE CLEARER. WORK SMARTER. ACHIEVE MORE.',
     description:
@@ -100,15 +100,15 @@ const ServicesSection = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center space-y-3 max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#DFB15B] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C88D2B]/15 border border-[#C88D2B]/40 text-[#DFB15B] text-[12px] sm:text-lg font-bold tracking-[0.2em] uppercase">
             <Sparkles size={12} className="text-[#DFB15B]" />
-            <span>03. WHAT WE DO — FOUR PILLARS OF EXPERTISE</span>
+            <span>WHAT WE DO — FOUR PILLARS OF EXPERTISE</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight">
             STRATEGIC ADVISORY & CONSULTING SOLUTIONS
           </h2>
-          <p className="text-gray-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Delivering insight, structure, and execution excellence across four core domains designed to make every decision count and every operation perform better.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
@@ -190,20 +190,20 @@ const ServicesSection = () => {
                       </h3>
                     </div>
 
-                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    <p className="text-gray-700 text-base sm:text-lg   leading-relaxed">
                       {service.description}
                     </p>
 
                     {/* Disciplines / Tags */}
                     <div className="space-y-2 pt-1">
-                      <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                      <p className="text-[13px] font-bold text-gray-500 uppercase tracking-wider">
                         Key Disciplines & Capabilities:
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {service.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1 rounded-full text-xs font-semibold bg-[#1C1E3D]/5 text-[#1C1E3D] border border-[#C88D2B]/30 flex items-center gap-1.5 hover:bg-[#C88D2B]/10 transition-colors"
+                            className="px-3 py-1 rounded-full text-base sm:text-lg font-semibold bg-[#1C1E3D]/5 text-[#1C1E3D] border border-[#C88D2B]/30 flex items-center gap-1.5 hover:bg-[#C88D2B]/10 transition-colors"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-[#C88D2B]" />
                             <span>{tag}</span>

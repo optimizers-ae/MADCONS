@@ -87,7 +87,7 @@ const CommitmentSection = () => {
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-600 leading-relaxed">
+                  <p className="sm:text-sm text-base text-gray-600 leading-relaxed">
                     {card.description}
                   </p>
                 </div>

@@ -54,13 +54,13 @@ const WorkDeliveredSection = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center space-y-3 max-w-3xl mx-auto mb-14"
         >
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C88D2B]">
+          <p className="text-base font-bold uppercase  text-[#C88D2B]">
             RECENT COMPLETED
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#0B132B]">
             OUR WORK DELIVERED
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
+          <p className="text-gray-600 text-base sm:text-lg">
             Explore some of our successful client collaborations and measurable project outcomes.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />
@@ -89,16 +89,16 @@ const WorkDeliveredSection = () => {
 
               <div className="p-5 flex-1 flex flex-col justify-between bg-[#1C1E3D] text-white">
                 <div className="space-y-2">
-                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#DFB15B] transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-white group-hover:text-[#DFB15B] transition-colors leading-snug">
                     {proj.title}
                   </h3>
-                  <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                  <p className="text-[15px] text-gray-400 line-clamp-2 leading-relaxed">
                     {proj.description}
                   </p>
                 </div>
 
                 <div className="pt-4 mt-3 border-t border-gray-800/80 flex items-center justify-between">
-                  <span className="text-[11px] text-[#C5A059] font-medium tracking-wide">
+                  <span className="text-[13px] text-[#C5A059] font-medium tracking-wide">
                     {proj.timeline}
                   </span>
                   <a href="#contact" className="cursor-pointer text-xs font-semibold text-gray-300 hover:text-[#C5A059] flex items-center gap-1 transition-colors">

@@ -1,28 +1,16 @@
-const BrandLogo = ({ variant = 'dark', showSubtitle = true, className = '' }) => {
+import { madarejLogo, madarejLogoDark } from '../utils/assets'
+
+const BrandLogo = ({ variant = 'dark', className = '' }) => {
   const isDark = variant === 'dark'
+  const logoSrc = isDark ? madarejLogo : madarejLogoDark
 
   return (
-    <div className={`flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
-
-      {/* Brand Typography with Multi-Color Styling */}
-      <div className="flex flex-col justify-center">
-        <div className="flex items-baseline font-black tracking-wider uppercase text-lg sm:text-2xl leading-tight">
-          <span className={isDark ? 'text-white' : 'text-[#1C1E3D]'}>
-            MADA
-          </span>
-          <span className="text-[#C5A059]">
-            ARIJ
-          </span>
-        </div>
-
-        {showSubtitle && (
-          <span
-            className="block text-[7px] sm:text-[8px] font-bold tracking-[0.24em] uppercase leading-none mt-1 text-[#C5A059]"
-          >
-            consultancy studies
-          </span>
-        )}
-      </div>
+    <div className={`flex items-center select-none ${className}`}>
+      <img
+        src={logoSrc}
+        alt="MADAARIJ Consulting & Advisory"
+        className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity duration-200"
+      />
     </div>
   )
 }

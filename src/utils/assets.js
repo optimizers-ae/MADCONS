@@ -1,5 +1,7 @@
 import heroBg from '../assets/images/image-1.webp'
-import logo from '../assets/images/image-2.webp'
+import madarejLogo from '../assets/madarej-logo.webp'
+import madarejLogoDark from '../assets/madarej-logo-dark.webp'
+const logo = madarejLogo
 import heroMan from '../assets/images/image-3.webp'
 import aboutTeam from '../assets/images/image-4.webp'
 import workItSecurity from '../assets/images/image-5.webp'
@@ -39,7 +41,7 @@ import serviceOperationalAnalysis from '../assets/images/service-operational-ana
 import ourDifference from '../assets/images/our-difference.webp'
 
 export {
-  heroBg, logo, heroMan, aboutTeam,
+  heroBg, logo, madarejLogo, madarejLogoDark, heroMan, aboutTeam,
   workItSecurity, workStrategicPlan, workLogistics, workIndustrial,
   quoteBg, sectorsLab,
   iconPackaging, iconHealth, iconTech, iconConstruction, iconLogistics,

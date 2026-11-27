@@ -78,11 +78,12 @@ const Hero = () => {
                 </p>
                 <div className="tracking-tight font-black uppercase text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.08]">
                   <h1 className="tracking-tight inline-block">
-                    <span className="text-white">MADA</span>
-                    <span className="text-[#C5A059]">ARIJ</span>
+                    MADAARIJ
+                    {/* <span className="text-white">MADA</span>
+                    <span className="text-[#C5A059]">ARIJ</span> */}
                   </h1>
                   <span className="block text-[#C5A059] text-xl sm:text-2xl md:text-3xl font-extrabold tracking-normal">
-                    CONSULTING & ADVISORY
+                    <span className="text-white">C</span>ONSULTING & <span className="text-white">A</span>DVISORY
                   </span>
                 </div>
               </motion.div>
@@ -106,12 +107,12 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.45 }}
-                className="space-y-2 text-gray-200 text-xs sm:text-sm leading-relaxed"
+                className="space-y-2 text-gray-200 text-sm sm:text-[16px] leading-relaxed"
               >
-                <p className="font-medium text-white/95">
+                <p className="font-medium text-base  text-white/95">
                   We believe that better business starts with better thinking.
                 </p>
-                <p className="text-gray-300 text-xs sm:text-[13px] leading-relaxed">
+                <p className="text-gray-300 text-base sm:text-[16px] leading-relaxed">
                   In a world where efficiency, precision, and smart decisions define success, we help organizations see opportunities differently, work smarter, and achieve more.
                 </p>
               </motion.div>
@@ -123,10 +124,10 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.55 }}
                 className="p-3 sm:p-3.5 rounded-xl bg-[#242854]/60 border border-amber-400/25 backdrop-blur-sm"
               >
-                <p className="text-xs sm:text-[13px] font-semibold text-amber-100 leading-snug">
+                <p className=" sm:text-[16px] font-semibold text-amber-100 leading-snug">
                   “We don't just provide services. We create smarter ways forward.”
                 </p>
-                <p className="text-[11px] sm:text-xs text-gray-300 mt-1">
+                <p className="text-[13px] sm:text-xs text-gray-300 mt-1">
                   Discover a partner committed to making every decision count and every operation work better.
                 </p>
               </motion.div>

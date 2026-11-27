@@ -71,7 +71,7 @@ const SectorsSection = () => {
               </h2>
             </div>
 
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               Our multidisciplinary consultants provide targeted project governance across a wide spectrum of mission-critical commercial and industrial domains.
             </p>
 
@@ -79,7 +79,7 @@ const SectorsSection = () => {
               {sectors.map((sec) => {
                 const isSelected = selectedSector.name === sec.name
                 return (
-                  <button key={sec.name} onClick={() => setSelectedSector(sec)} className={`cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-medium transition-all duration-200 border ${isSelected ? 'bg-[#C88D2B] text-white border-[#C88D2B] shadow-md scale-105' : 'bg-[#FAF6F0] text-gray-800 border-amber-200/80 hover:bg-[#F3E7D3] hover:border-[#C88D2B]/50'}`}>
+                  <button key={sec.name} onClick={() => setSelectedSector(sec)} className={`cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-base sm:text-sm font-medium transition-all duration-200 border ${isSelected ? 'bg-[#C88D2B] text-white border-[#C88D2B] shadow-md scale-105' : 'bg-[#FAF6F0] text-gray-800 border-amber-200/80 hover:bg-[#F3E7D3] hover:border-[#C88D2B]/50'}`}>
                     <img src={sec.icon} alt="" className="w-4 h-4 object-contain shrink-0" />
                     <span>{sec.name}</span>
                   </button>

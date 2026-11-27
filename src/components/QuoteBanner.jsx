@@ -45,7 +45,7 @@ const QuoteBanner = () => {
             <p className="text-base sm:text-lg md:text-xl font-medium text-gray-200 leading-relaxed uppercase tracking-wide">
               THEY ARE BUILT ON STRATEGY, PRECISION, AND DEDICATION. LET US HELP YOU ACHIEVE YOUR HIGHEST POTENTIAL.
             </p>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-400 text-base leading-relaxed">
               We empower organizations across the region with world-class project governance, safeguarding capital investments and ensuring visionary projects are delivered flawlessly.
             </p>
             <div>
