@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react'
 import {
@@ -80,9 +80,109 @@ const servicesData = [
 
 const ServicesSection = () => {
   const [currentIdx, setCurrentIdx] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+
+  const touchStartX = useRef(0)
+  const touchStartY = useRef(0)
+  const touchDeltaX = useRef(0)
+  const isSwiping = useRef(false)
+  const isPointerDown = useRef(false)
 
   const prevService = () => setCurrentIdx((prev) => (prev === 0 ? servicesData.length - 1 : prev - 1))
   const nextService = () => setCurrentIdx((prev) => (prev + 1) % servicesData.length)
+
+  // Touch handlers for finger scrolling on mobile & touch devices
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+    touchDeltaX.current = 0
+    isSwiping.current = false
+  }
+
+  const handleTouchMove = (e) => {
+    const currentX = e.touches[0].clientX
+    const currentY = e.touches[0].clientY
+    const diffX = currentX - touchStartX.current
+    const diffY = currentY - touchStartY.current
+
+    if (!isSwiping.current) {
+      if (Math.abs(diffX) > 10 && Math.abs(diffX) > Math.abs(diffY)) {
+        isSwiping.current = true
+      } else if (Math.abs(diffY) > 10) {
+        return // vertical scroll, ignore horizontal swipe
+      }
+    }
+
+    if (isSwiping.current) {
+      touchDeltaX.current = diffX
+      const isAtStart = currentIdx === 0 && diffX > 0
+      const isAtEnd = currentIdx === servicesData.length - 1 && diffX < 0
+      const resistance = isAtStart || isAtEnd ? 0.35 : 1
+      setDragOffset(diffX * resistance)
+    }
+  }
+
+  const handleTouchEnd = () => {
+    if (isSwiping.current) {
+      const threshold = 45
+      if (touchDeltaX.current < -threshold) {
+        nextService()
+      } else if (touchDeltaX.current > threshold) {
+        prevService()
+      }
+    }
+    setDragOffset(0)
+    isSwiping.current = false
+    setTimeout(() => {
+      touchDeltaX.current = 0
+    }, 50)
+  }
+
+  // Mouse drag handlers for desktop trackpad/mouse dragging
+  const handleMouseDown = (e) => {
+    isPointerDown.current = true
+    touchStartX.current = e.clientX
+    touchStartY.current = e.clientY
+    touchDeltaX.current = 0
+    isSwiping.current = false
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isPointerDown.current) return
+    const diffX = e.clientX - touchStartX.current
+    const diffY = e.clientY - touchStartY.current
+
+    if (!isSwiping.current && Math.abs(diffX) > 8 && Math.abs(diffX) > Math.abs(diffY)) {
+      isSwiping.current = true
+    }
+
+    if (isSwiping.current) {
+      touchDeltaX.current = diffX
+      const isAtStart = currentIdx === 0 && diffX > 0
+      const isAtEnd = currentIdx === servicesData.length - 1 && diffX < 0
+      const resistance = isAtStart || isAtEnd ? 0.35 : 1
+      setDragOffset(diffX * resistance)
+    }
+  }
+
+  const handleMouseUp = () => {
+    if (isPointerDown.current) {
+      if (isSwiping.current) {
+        const threshold = 45
+        if (touchDeltaX.current < -threshold) {
+          nextService()
+        } else if (touchDeltaX.current > threshold) {
+          prevService()
+        }
+      }
+      setDragOffset(0)
+      isPointerDown.current = false
+      setTimeout(() => {
+        isSwiping.current = false
+        touchDeltaX.current = 0
+      }, 50)
+    }
+  }
 
   return (
     <section id="services" className="relative bg-[#1C1E3D] text-white py-20 lg:py-28 overflow-hidden">
@@ -139,16 +239,30 @@ const ServicesSection = () => {
             <ChevronRight size={22} />
           </button>
 
-          {/* Sliding Track */}
-          <div className="overflow-hidden">
+          {/* Sliding Track with Finger Swipe & Mouse Drag Support */}
+          <div
+            className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
+            style={{ touchAction: 'pan-y' }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
             <div
-              className="flex transition-transform duration-[900ms] ease-[cubic-bezier(0.65,0,0.35,1)] will-change-transform"
-              style={{ transform: `translateX(-${currentIdx * 100}%)` }}
+              className="flex will-change-transform"
+              style={{
+                transform: `translateX(calc(-${currentIdx * 100}% + ${dragOffset}px))`,
+                transition: dragOffset !== 0 ? 'none' : 'transform 600ms cubic-bezier(0.25, 1, 0.5, 1)'
+              }}
             >
               {servicesData.map((service, i) => (
                 <div
                   key={service.id}
-                  className={`w-full shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center transition-opacity duration-[1100ms] ease-in-out ${
+                  className={`w-full shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center transition-opacity duration-700 ease-in-out ${
                     i === currentIdx ? 'opacity-100' : 'opacity-0'
                   }`}
                   aria-hidden={i !== currentIdx}
@@ -165,7 +279,8 @@ const ServicesSection = () => {
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        draggable={false}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
                       />
                       <div className="absolute top-4 left-4 px-3.5 py-1.5 bg-[#1C1E3D]/85 backdrop-blur-md rounded-full text-xs font-bold text-[#DFB15B] uppercase tracking-wider border border-[#C5A059]/30">
                         {service.category}
@@ -190,7 +305,7 @@ const ServicesSection = () => {
                       </h3>
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg   leading-relaxed">
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                       {service.description}
                     </p>
 
@@ -216,6 +331,11 @@ const ServicesSection = () => {
                     <div className="pt-3">
                       <a
                         href="#contact"
+                        onClick={(e) => {
+                          if (Math.abs(touchDeltaX.current) > 10) {
+                            e.preventDefault()
+                          }
+                        }}
                         tabIndex={i === currentIdx ? 0 : -1}
                         className="cursor-pointer inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#1C1E3D] text-white hover:bg-[#C88D2B] hover:text-[#1C1E3D] transition-all duration-300 shadow-md group"
                       >
