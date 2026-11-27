@@ -73,16 +73,16 @@ const Hero = () => {
                 transition={{ duration: 0.7, delay: 0.25 }}
                 className="space-y-1"
               >
-                <p className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gray-300">
+                <p className="text-sm font-semibold tracking-wider uppercase text-gray-300">
                   Welcome to
                 </p>
-                <div className="tracking-tight font-black uppercase text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.08]">
+                <div className="tracking-tight font-black uppercase text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.08]">
                   <h1 className="tracking-tight inline-block">
                     MADAARIJ
                     {/* <span className="text-white">MADA</span>
                     <span className="text-[#C5A059]">ARIJ</span> */}
                   </h1>
-                  <span className="block text-[#C5A059] text-xl sm:text-2xl md:text-3xl font-extrabold tracking-normal">
+                  <span className="block text-[#C5A059] text-2xl sm:text-2xl md:text-3xl font-extrabold tracking-normal">
                     <span className="text-white">C</span>ONSULTING & <span className="text-white">A</span>DVISORY
                   </span>
                 </div>

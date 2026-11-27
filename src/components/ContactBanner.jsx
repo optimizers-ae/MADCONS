@@ -91,7 +91,7 @@ const ContactBanner = () => {
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                     COMPANY NAME
                   </p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B]">
+                  <p className="text-sm font-extrabold text-[#0B132B]">
                     MADAARIJ <span className="text-[#C88D2B] font-medium">Consulting & Advisory</span>
                   </p>
                 </div>
@@ -109,7 +109,7 @@ const ContactBanner = () => {
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                     EMAIL
                   </p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B] group-hover:text-[#C88D2B] transition-colors">
+                  <p className="text-sm font-extrabold text-[#0B132B] group-hover:text-[#C88D2B] transition-colors">
                     connect@madcons.com
                   </p>
                 </div>
@@ -124,7 +124,7 @@ const ContactBanner = () => {
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                     PHONE
                   </p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B]">
+                  <p className="text-sm font-extrabold text-[#0B132B]">
                     [Your Telephone Number]
                   </p>
                 </div>
@@ -139,7 +139,7 @@ const ContactBanner = () => {
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                     LOCATION
                   </p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#0B132B]">
+                  <p className="text-sm font-extrabold text-[#0B132B]">
                     We are in the UAE.
                   </p>
                 </div>

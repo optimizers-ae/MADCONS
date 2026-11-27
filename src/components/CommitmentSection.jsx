@@ -54,7 +54,7 @@ const CommitmentSection = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white">
             OUR COMMITMENT TO YOU
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base">
+          <p className="text-gray-300 text-base">
             Excellence, transparency, and measurable results at every step of your project journey.
           </p>
           <div className="w-16 h-1 bg-[#C88D2B] mx-auto rounded-full mt-2" />

@@ -31,7 +31,7 @@ const Footer = () => {
               </div>
               <div className="text-left">
                 <p className="text-[10px] font-bold text-[#C88D2B] uppercase tracking-wider">Call Us</p>
-                <p className="text-xs sm:text-sm font-semibold text-[#0B132B]">+966 11 234 5678</p>
+                <p className="text-xs sm:text-sm font-semibold text-[#0B132B]">[Your Telephone Number ]</p>
               </div>
             </div>
 
