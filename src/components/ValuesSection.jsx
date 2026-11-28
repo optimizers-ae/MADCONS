@@ -68,7 +68,7 @@ const ValuesSection = () => {
         </motion.div>
 
         {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
           
           {/* Left Column: High-Res Boardroom Photo & Strategic Impact Box (Fade from Left) */}
           <motion.div
@@ -76,13 +76,13 @@ const ValuesSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="lg:col-span-5 space-y-4"
+            className="lg:col-span-5 flex flex-col justify-between space-y-4"
           >
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-amber-900/15 group">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-amber-900/15 group flex-1 min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] xl:min-h-[640px] flex flex-col">
               <img
                 src={ourDifference}
                 alt="Madaarij Executive Boardroom Consultation"
-                className="w-full h-[380px] sm:h-[440px] lg:h-[490px] xl:h-[520px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1C1E3D]/80 via-[#1C1E3D]/20 to-transparent" />
               
@@ -91,7 +91,7 @@ const ValuesSection = () => {
                 <p className="text-[15px] sm:text-base font-bold uppercase tracking-widest text-[#DFB15B]">
                   Client Collaboration & Governance
                 </p>
-                <p className="text-[15px] sm:text-base  text-xs sm:text-sm font-semibold text-gray-200 mt-1 leading-snug">
+                <p className="text-xs sm:text-sm font-semibold text-gray-200 mt-1 leading-snug">
                   Strategic discussions driving measurable, long-term impact.
                 </p>
               </div>

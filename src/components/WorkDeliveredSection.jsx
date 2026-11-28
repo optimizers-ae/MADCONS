@@ -5,39 +5,39 @@ import { workItSecurity, workStrategicPlan, workLogistics, workIndustrial } from
 const projects = [
   {
     id: 1,
-    image: workItSecurity,
-    category: 'Information Technology',
-    title: 'Enterprise Cyber Security & Data Infrastructure',
-    description: 'Turnkey project management for a tier-3 data center and high-security cyber infrastructure deployment.',
-    client: 'FinTech Enterprise',
-    timeline: '9 Months'
+    image: workLogistics,
+    category: 'Logistics & Warehousing',
+    title: 'Outsourcing Warehouse & Warehouse Shift Plan & Execution',
+    description: 'Comprehensive outsourcing strategy, facility transition roadmap, shift planning, and hands-on execution oversight for high-volume warehousing.',
+    client: 'Regional Logistics Carrier',
+    timeline: '6 Months'
   },
   {
     id: 2,
     image: workStrategicPlan,
-    category: 'Commercial Architecture',
-    title: 'Corporate Headquarters Strategic Space Planning',
-    description: 'End-to-end scope, vendor procurement, and construction supervision for a 45,000 sq ft corporate office.',
-    client: 'Multinational Group',
-    timeline: '12 Months'
+    category: 'Strategic Procurement',
+    title: 'Procurement Restructuring & Strategic Sourcing Advisory',
+    description: 'End-to-end procurement audit, supplier contract renegotiation, and spend optimization framework to streamline supply acquisition and purchasing.',
+    client: 'Enterprise Holding Group',
+    timeline: '8 Months'
   },
   {
     id: 3,
-    image: workLogistics,
-    category: 'Supply Chain & Logistics',
-    title: 'Smart Automated Fulfillment & Warehouse Hub',
-    description: 'Procurement orchestration, robotics integration, and building management oversight for an automated logistics center.',
-    client: 'Regional Logistics Carrier',
-    timeline: '14 Months'
+    image: workItSecurity,
+    category: 'Administrative Studies',
+    title: 'Corporate Administrative Studies & Workflow Restructuring',
+    description: 'Diagnostic organizational assessment, internal hierarchy realignment, and standard operating procedures (SOPs) development across business units.',
+    client: 'Public-Private Enterprise',
+    timeline: '5 Months'
   },
   {
     id: 4,
     image: workIndustrial,
-    category: 'Industrial Engineering',
-    title: 'Precision Industrial Facility & Engineering Buildout',
-    description: 'Supervision of heavy MEP installations, strict regulatory safety compliance, and stage-gate commissioning.',
-    client: 'Manufacturing Conglomerate',
-    timeline: '18 Months'
+    category: 'Operational Analysis',
+    title: 'Operational Efficiency Analysis & Process Optimization',
+    description: 'Cross-functional operational performance review, bottleneck elimination, and KPI tracking frameworks to elevate productivity and cost efficiency.',
+    client: 'Manufacturing & Distribution Co.',
+    timeline: '7 Months'
   }
 ]
 
@@ -92,7 +92,7 @@ const WorkDeliveredSection = () => {
                   <h3 className="text-base font-bold text-white group-hover:text-[#DFB15B] transition-colors leading-snug">
                     {proj.title}
                   </h3>
-                  <p className="text-[15px] text-gray-400 line-clamp-2 leading-relaxed">
+                  <p className="text-[14px] sm:text-[15px] text-gray-300 line-clamp-3 leading-relaxed">
                     {proj.description}
                   </p>
                 </div>

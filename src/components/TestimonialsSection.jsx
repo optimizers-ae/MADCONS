@@ -96,19 +96,19 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener('resize', updateItems)
   }, [])
 
-  // Auto-slide every 3 seconds; pauses on hover / touch
+  // Auto-slide every 3.5 seconds; pauses on hover / touch
   useEffect(() => {
     if (isPaused) return
 
     const timer = setInterval(() => {
       setIsTransitioning(true)
       setCurrentIndex((prev) => prev + 1)
-    }, 3000)
+    }, 3500)
 
     return () => clearInterval(timer)
-  }, [isPaused, currentIndex])
+  }, [isPaused])
 
-  // Seamless loop: at the cloned first card, silently reset to 0
+  // Seamless loop: when sliding past the end, smoothly and silently reset to 0
   useEffect(() => {
     if (currentIndex >= testimonials.length) {
       const resetTimer = setTimeout(() => {
@@ -119,13 +119,13 @@ const TestimonialsSection = () => {
     }
   }, [currentIndex])
 
-  // Re-enable CSS transition after instant reset
+  // Re-enable CSS transition right after instant reset
   useEffect(() => {
     if (!isTransitioning) {
-      const timer = setTimeout(() => {
+      const frame = requestAnimationFrame(() => {
         setIsTransitioning(true)
-      }, 60)
-      return () => clearTimeout(timer)
+      })
+      return () => cancelAnimationFrame(frame)
     }
   }, [isTransitioning])
 
@@ -141,7 +141,7 @@ const TestimonialsSection = () => {
 
   const goPrev = () => {
     if (currentIndex <= 0) {
-      // Jump (no animation) to the cloned first card, then slide back to the last real card
+      // Jump (no animation) to the cloned card set, then slide back
       setIsTransitioning(false)
       setCurrentIndex(testimonials.length)
       setTimeout(() => {
@@ -151,6 +151,19 @@ const TestimonialsSection = () => {
     } else {
       setIsTransitioning(true)
       setCurrentIndex((prev) => prev - 1)
+    }
+  }
+
+  // Pointer hover handlers: only pause for genuine mouse pointer events (avoids sticking on mobile tap)
+  const handlePointerEnter = (e) => {
+    if (e.pointerType === 'mouse' || !e.pointerType) {
+      setIsPaused(true)
+    }
+  }
+
+  const handlePointerLeave = (e) => {
+    if (e.pointerType === 'mouse' || !e.pointerType) {
+      setIsPaused(false)
     }
   }
 
@@ -228,8 +241,8 @@ const TestimonialsSection = () => {
           <div
             className="overflow-hidden py-3"
             style={{ touchAction: 'pan-y' }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            onPointerEnter={handlePointerEnter}
+            onPointerLeave={handlePointerLeave}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
